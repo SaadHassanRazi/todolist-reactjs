@@ -1,7 +1,15 @@
 const express = require("express");
 const app = express();
 app.use(express.json());
+const cors = require("cors");
 
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Replace with your frontend's URL
+    methods: "GET,POST", // Specify allowed methods
+    credentials: true, // Include credentials if needed
+  })
+);
 let todoList = [
   {
     id: 1,
@@ -22,11 +30,9 @@ app.post("/api/todos", (req, res) => {
 
   // Validation to ensure all fields are provided
   if (!todo || status === undefined || !date) {
-    return res
-      .status(400)
-      .json({
-        message: "Please provide all required fields: todo, status, date.",
-      });
+    return res.status(400).json({
+      message: "Please provide all required fields: todo, status, date.",
+    });
   }
 
   const newTodo = {

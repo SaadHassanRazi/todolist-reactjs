@@ -1,18 +1,19 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import WebTask from "../components/WebTask";
+import { Outlet } from "react-router-dom";
 
-const WebTaskPage = () => {
+const Home = () => {
   return (
-    <div className="row mx-auto">
+    <div className="d-flex">
       <div className="col-2 col-md-3 border">
         <Sidebar />
       </div>
-      <div className="col border">
-        <WebTask />
+      <div className="col border p-3">
+       
+        <Outlet />
       </div>
     </div>
   );
 };
 
-export default WebTaskPage;
+export default Home;

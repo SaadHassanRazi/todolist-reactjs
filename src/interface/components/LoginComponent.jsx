@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LoginComponent = () => {
   return (
@@ -26,12 +27,13 @@ const LoginComponent = () => {
             />
           </div>
 
-          <button
+          <Link
+            to={"/web-task"}
             type="submit"
             className="btn btn-primary rounded-pill w-100 py-2"
           >
             Log In
-          </button>
+          </Link>
         </div>
       </form>
     </div>

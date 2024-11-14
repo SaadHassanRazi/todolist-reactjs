@@ -7,13 +7,17 @@ import {
 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import "./css/addTask.css";
+import { v4 } from "uuid";
+import { useTodo } from "../../useCases/context/TodoContext";
 
 const AddTask = () => {
   const [todo, setTodo] = useState("");
   const [status, setStatus] = useState(false);
   const [dateTime, setDateTime] = useState("");
+  const { addTodoData } = useTodo();
 
   const userData = {
+    id: v4(),
     todo,
     status,
     date: dateTime,
@@ -21,6 +25,7 @@ const AddTask = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(userData);
+    addTodoData(userData);
 
     setTodo("");
     setStatus(false);
@@ -72,6 +77,8 @@ const AddTask = () => {
                     type="text"
                     class="form-control no-border border-bottom pb-3"
                     placeholder="Summary"
+                    value={todo}
+                    onChange={(e) => setTodo(e.target.value)}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                   />
@@ -94,35 +101,15 @@ const AddTask = () => {
                     <Clock className="h4 me-1" />
                   </span>
                   <input
-                    type="text"
+                    type="datetime-local"
+                    value={dateTime}
+                    onChange={(e) => setDateTime(e.target.value)}
                     class="form-control no-border border-bottom pb-3"
                     placeholder="Due Date"
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                   />
                 </div>
-
-                {/* <div className="text-center">
-                  <label>Status:</label>
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    checked={status}
-                    onChange={(e) => setStatus(e.target.checked)}
-                    disabled
-                  />
-                </div>
-
-                <div className="text-center">
-                  <label>Date and Time</label>
-                  <input
-                    type="datetime-local"
-                    className="form-control"
-                    value={dateTime}
-                    onChange={(e) => setDateTime(e.target.value)}
-                    required
-                  />
-                </div> */}
 
                 <button
                   type="submit"
@@ -132,7 +119,7 @@ const AddTask = () => {
                   Save
                 </button>
                 <button
-                  type="submit"
+                  type="button"
                   className="btn d-flex mx-auto justify-content-center rounded-pill py-2  w-75"
                   style={{ fontWeight: "bold" }}
                   data-bs-dismiss="modal"

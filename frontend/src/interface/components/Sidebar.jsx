@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import {
-  BoxArrowRight,
-  Clipboard,
-  ClipboardData,
-  ClipboardDataFill,
-  GeoAlt,
-  Map,
-  SignDeadEnd,
-} from "react-bootstrap-icons";
+import { BoxArrowRight, ClipboardData, GeoAlt } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../useCases/context/AuthContext";
 
 const Sidebar = () => {
   const [activeId, setActiveId] = useState(1);
+  const { logout } = useAuth();
 
   const sideNav = [
     {
@@ -74,7 +68,7 @@ const Sidebar = () => {
       </ul>
       <Link
         className="nav-link mt-auto ms-3 text-dark"
-        to={"/login"}
+        onClick={logout}
         style={{
           cursor: "pointer",
           width: "250px",

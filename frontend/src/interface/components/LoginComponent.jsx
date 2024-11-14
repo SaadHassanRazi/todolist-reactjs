@@ -1,10 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+
+import { useAuth } from "../../useCases/context/AuthContext";
 
 const LoginComponent = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { loginAction } = useAuth();
+  const userData = {
+    email,
+    password,
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(userData);
+    loginAction(userData);
+  };
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100">
-      <form>
+      <form onSubmit={submitHandler}>
         <div
           className="mx-auto  p-4"
           style={{ height: "296px", width: "343px" }}
@@ -19,6 +32,8 @@ const LoginComponent = () => {
             <input
               type="email"
               className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{ background: "#ededed", height: "50px" }}
               placeholder="Email"
               id="exampleInputEmail1"
@@ -29,18 +44,19 @@ const LoginComponent = () => {
               type="password"
               style={{ background: "#ededed", height: "50px" }}
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
             />
           </div>
 
-          <Link
-            to={"/web-task"}
+          <button
             type="submit"
             className="btn btn-dark rounded-pill w-100 py-2"
           >
             Log In
-          </Link>
+          </button>
         </div>
       </form>
     </div>

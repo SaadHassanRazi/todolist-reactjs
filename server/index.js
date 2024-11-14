@@ -15,7 +15,22 @@ let todoList = [
     id: 1,
     todo: "Go to Gym",
     status: false,
-    date: "2024-11-13T13:00:00", // ISO 8601 format
+    date: "2024-11-13T13:00:00",
+    // ISO 8601 format
+  },
+  {
+    id: 2,
+    todo: "Respond to Jane",
+    status: true,
+    date: "2024-11-13T13:00:00",
+    // ISO 8601 format
+  },
+  {
+    id: 3,
+    todo: "Times up",
+    status: false,
+    date: "2024-11-14T12:24:00",
+    // ISO 8601 format
   },
 ];
 
@@ -44,6 +59,17 @@ app.post("/api/todos", (req, res) => {
 
   todoList.push(newTodo);
   res.status(201).json(newTodo);
+});
+
+const users = [
+  { id: 1, email: "user@example.com", password: "12345678" },
+  { id: 2, email: "admin@example.com", password: "admin1234" },
+  { id: 3, email: "test@example.com", password: "password123" },
+];
+
+// GET: Retrieve the list of users (for demonstration purposes)
+app.get("/api/users", (req, res) => {
+  res.json(users);
 });
 
 // Start the server

@@ -13,9 +13,9 @@ const Router = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route element={<ProtectedRoute />}>
-          <Route element={<Home />}>
-            <Route path="/web-task" element={<WebTask />} />
-            <Route path="/location" element={<LocationComponent />} />
+          <Route path="/" element={<Home />}>
+            <Route path="webtask" element={<WebTask />} />
+            <Route path="location" element={<LocationComponent />} />
           </Route>
         </Route>
       </Routes>

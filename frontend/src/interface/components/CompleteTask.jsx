@@ -21,30 +21,28 @@ const CompleteTask = () => {
         {todoData.map((item, index) => {
           if (item.status) {
             return (
-              <>
-                <li
-                  class="list-group-item d-flex justify-content-between align-items-start"
-                  key={item.id}
-                >
-                  <div class="form-check ">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      checked={item.status}
-                      onChange={(e) => {
-                        changeTaskStatusHandler(item.id, e.target.checked);
-                      }}
-                      id="flexCheckDefault"
-                    />
+              <li
+                class="list-group-item d-flex justify-content-between align-items-start"
+                key={item.id}
+              >
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    checked={item.status}
+                    onChange={(e) => {
+                      changeTaskStatusHandler(item.id, e.target.checked);
+                    }}
+                    id="flexCheckDefault"
+                  />
+                </div>
+                <div class="ms-2 me-auto mt-1">
+                  <div class="text-secondary">
+                    {" "}
+                    <p className="">{item.todo}</p>
                   </div>
-                  <div class="ms-2 me-auto mt-1">
-                    <div class="text-secondary">
-                      {" "}
-                      <p className="">{item.todo}</p>
-                    </div>
-                  </div>
-                </li>
-              </>
+                </div>
+              </li>
             );
           }
         })}

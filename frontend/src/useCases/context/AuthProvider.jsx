@@ -22,7 +22,9 @@ export const AuthProvider = ({ children }) => {
         setToken(user.token);
         localStorage.setItem("user", user.email); // Corrected usage
         localStorage.setItem("site", user.token);
-        navigate("/web-task");
+
+        setTimeout(() => navigate("/webtask"), 0);
+
         return;
       }
       throw new Error("Invalid credentials or role");

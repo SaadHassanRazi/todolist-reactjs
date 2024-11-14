@@ -12,8 +12,17 @@ const IncompleteTask = () => {
       status,
     };
     changeTaskStatus(taskData);
+  };
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleString("en-US", {
+      day: "numeric",
+      month: "short",
 
-    // changeTaskStatus(taskData);
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true, // For AM/PM format
+    });
   };
 
   return (
@@ -25,33 +34,37 @@ const IncompleteTask = () => {
         {todoData.map((item, index) => {
           if (!item.status) {
             return (
-              <>
-                <li
-                  class="list-group-item d-flex justify-content-between align-items-start"
-                  key={item.id}
-                >
-                  <div class="form-check">
-                    <input
-                      className="form-check-input"
-                      style={{ accentColor: "black" }}
-                      type="checkbox"
-                      id="flexCheckDefault"
-                      checked={item.status}
-                      onChange={(e) => {
-                        changeTaskStatusHandler(item.id, e.target.checked);
-                      }}
-                    />
-                    <div class="ms-2 me-auto">
-                      <p className="">{item.todo}</p>
-                      <div style={{ position: "relative", bottom: "12px" }}>
+              <li
+                class="list-group-item d-flex justify-content-between align-items-start"
+                key={item.id}
+              >
+                <div class="form-check">
+                  <input
+                    className="form-check-input"
+                    style={{ accentColor: "black" }}
+                    type="checkbox"
+                    id="flexCheckDefault"
+                    checked={item.status}
+                    onChange={(e) => {
+                      changeTaskStatusHandler(item.id, e.target.checked);
+                    }}
+                  />
+                  <div class="ms-2 me-auto">
+                    <p className="">{item.todo}</p>
+                    <div style={{ position: "relative", bottom: "12px" }}>
+                      {" "}
+                      <ClockFill style={{ fontSize: "14px" }} />
+                      <span
+                        className="text-secondary "
+                        style={{ fontSize: "14px", fontWeight: 600 }}
+                      >
                         {" "}
-                        <ClockFill className="" />
-                        <span className="text-secondary px-1">{item.date}</span>
-                      </div>
+                        {formatDate(item.date)}
+                      </span>
                     </div>
                   </div>
-                </li>
-              </>
+                </div>
+              </li>
             );
           }
         })}

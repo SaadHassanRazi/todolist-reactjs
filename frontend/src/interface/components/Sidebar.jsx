@@ -12,7 +12,7 @@ const Sidebar = () => {
       id: 1,
       name: "Task",
       icon: <ClipboardData />,
-      path: "/web-task",
+      path: "/webtask",
     },
     {
       id: 2,
@@ -66,7 +66,8 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
-      <Link
+      <button
+        type="button"
         className="nav-link mt-auto ms-3 text-dark"
         onClick={logout}
         style={{
@@ -90,7 +91,7 @@ const Sidebar = () => {
             Logout
           </div>
         </div>
-      </Link>
+      </button>
     </div>
   );
 };

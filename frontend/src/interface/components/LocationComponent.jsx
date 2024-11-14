@@ -12,13 +12,13 @@ const LocationComponent = () => {
       >
         <span
           className="font-weight-bold"
-          style={{ fontWeight: "700",fontSize:'18px' }}
+          style={{ fontWeight: "700", fontSize: "18px" }}
         >
           + Check In
         </span>
       </Link>
       <div className="pt-4 ">
-        <h3 className="h5"  style={{ fontWeight: "700",fontSize:'18px' }}>
+        <h3 className="h5" style={{ fontWeight: "700", fontSize: "18px" }}>
           Current Location
         </h3>
         <ul class="w-50 ">
@@ -27,12 +27,14 @@ const LocationComponent = () => {
             style={{ lineHeight: "15px" }}
           >
             <div class="">
-              <BroadcastPin />
+              <BroadcastPin style={{ fontSize: "18px" }} />
             </div>
             <div class="ms-2 me-auto">
               <p className="font-weight-bold">Lahore,Pakistan,SE</p>
 
-              <span className="text-secondary px-1">59.3293 E</span>
+              <span className="text-secondary" style={{ fontSize: "14px" }}>
+                59.3293 E
+              </span>
             </div>
           </li>
         </ul>
@@ -60,7 +62,7 @@ const LocationComponent = () => {
           );
         })}
       </ul> */}
-        <h3 className="h5 pt-3"  style={{ fontWeight: "700",fontSize:'18px' }}>
+        <h3 className="h5 pt-3" style={{ fontWeight: "700", fontSize: "18px" }}>
           Previous Location
         </h3>
         <ul class="w-50 ">
@@ -69,12 +71,14 @@ const LocationComponent = () => {
             style={{ lineHeight: "15px" }}
           >
             <div class="">
-              <BroadcastPin />
+              <BroadcastPin style={{ fontSize: "18px" }} />
             </div>
             <div class="ms-2 me-auto">
               <p className="font-weight-bold">Lahore,Pakistan,SE</p>
 
-              <span className="text-secondary px-1">59.3293 E</span>
+              <span className="text-secondary" style={{ fontSize: "14px" }}>
+                59.3293 E
+              </span>
             </div>
           </li>
           <li
@@ -82,12 +86,14 @@ const LocationComponent = () => {
             style={{ lineHeight: "15px" }}
           >
             <div class="">
-              <BroadcastPin />
+              <BroadcastPin style={{ fontSize: "18px" }} />
             </div>
             <div class="ms-2 me-auto">
               <p className="font-weight-bold">Lahore,Pakistan,SE</p>
 
-              <span className="text-secondary px-1">59.3293 E</span>
+              <span className="text-secondary" style={{ fontSize: "14px" }}>
+                59.3293 E
+              </span>
             </div>
           </li>
           <li
@@ -95,12 +101,14 @@ const LocationComponent = () => {
             style={{ lineHeight: "15px" }}
           >
             <div class="">
-              <BroadcastPin />
+              <BroadcastPin style={{ fontSize: "18px" }} />
             </div>
             <div class="ms-2 me-auto">
               <p className="font-weight-bold">Lahore,Pakistan,SE</p>
 
-              <span className="text-secondary px-1">59.3293 E</span>
+              <span className="text-secondary" style={{ fontSize: "14px" }}>
+                59.3293 E
+              </span>
             </div>
           </li>
           <li
@@ -108,17 +116,17 @@ const LocationComponent = () => {
             style={{ lineHeight: "15px" }}
           >
             <div class="">
-              <BroadcastPin />
+              <BroadcastPin style={{ fontSize: "18px" }} />
             </div>
             <div class="ms-2 me-auto">
               <p className="font-weight-bold">Lahore,Pakistan,SE</p>
 
-              <span className="text-secondary px-1">59.3293 E</span>
+              <span className="text-secondary " style={{ fontSize: "14px" }}>
+                59.3293 E
+              </span>
             </div>
           </li>
-          
         </ul>
-        
       </div>
     </div>
   );

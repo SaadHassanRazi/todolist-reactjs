@@ -21,21 +21,20 @@ export const TodoProvider = ({ children }) => {
 
     setTodoData(updatedTodos); // Update the state locally
   };
-
   const addTodoData = async (newData) => {
     try {
-      const response = await axiosInstance.post("/api/todos", newData);
-      const data = await response.data;
-      const isDuplicate = todoData.find((item) => item.todo === data.todo);
+      const isDuplicate = todoData.find((item) => item.todo === newData.todo);
       if (isDuplicate) {
         alert("Matching Todos Found");
         return;
-      } else {
-        setTodoData((prev) => [...prev, data]);
       }
-      await getTodoData();
+
+      const response = await axiosInstance.post("/api/todos", newData);
+      const data = response.data;
+
+      setTodoData((prev) => [...prev, data]);
     } catch (error) {
-      console.log("Error", error);
+      console.error("Error adding todo:", error);
     }
   };
 

@@ -1,15 +1,14 @@
-import React from "react";
+    import React, { useEffect } from "react";
+    import { Navigate, Outlet } from "react-router-dom";
+    import { useAuth } from "../../useCases/context/AuthContext";
 
-import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../../useCases/context/AuthContext";
+    function ProtectedRoute() {
+    const { token } = useAuth();
 
-function ProtectedRoute() {
-  const user = useAuth();
-  if (!user.token) {
-    <Navigate to={"/login"} />;
-  } else {
+    if (!token) {
+        return <Navigate to="/login" replace />;
+    }
+
     return <Outlet />;
-  }
-}
-
-export default ProtectedRoute;
+    }
+    export default ProtectedRoute;

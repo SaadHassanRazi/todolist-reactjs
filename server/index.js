@@ -62,9 +62,9 @@ app.post("/api/todos", (req, res) => {
 });
 
 const users = [
-  { id: 1, email: "user@example.com", password: "12345678" },
-  { id: 2, email: "admin@example.com", password: "admin1234" },
-  { id: 3, email: "test@example.com", password: "password123" },
+  { id: 1, email: "user@example.com", password: "12345678", token: "123" },
+  { id: 2, email: "admin@example.com", password: "admin1234", token: "321" },
+  { id: 3, email: "test@example.com", password: "password123", token: "212" },
 ];
 
 // GET: Retrieve the list of users (for demonstration purposes)

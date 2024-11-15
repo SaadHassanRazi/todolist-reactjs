@@ -3,6 +3,33 @@
   box-shadow: none;
 }
 
-.form-control:focus{
+.form-control:focus {
   box-shadow: none;
+}
+
+.datepicker {
+  width: 400px;
+  border: none;
+  border-bottom: 1px solid #bdbdbdcc;
+}
+.datepicker:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.no-border-input .MuiOutlinedInput-root {
+  border: none !important; /* Remove the border */
+}
+
+.no-border-input .MuiOutlinedInput-root:hover fieldset {
+  border: none !important; /* Remove border on hover */
+}
+
+.no-border-input .MuiOutlinedInput-root.Mui-focused fieldset {
+  border: none !important; /* Remove the focus border */
+  box-shadow: none !important; /* Remove box-shadow on focus */
+}
+
+.input__label {
+  border: "none";
 }

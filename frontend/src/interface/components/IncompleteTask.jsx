@@ -21,7 +21,7 @@ const IncompleteTask = () => {
 
       hour: "2-digit",
       minute: "2-digit",
-      hour12: true, // For AM/PM format
+      hour12: true,
     });
   };
 

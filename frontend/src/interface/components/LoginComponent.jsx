@@ -23,8 +23,13 @@ const LoginComponent = () => {
           style={{ height: "296px", width: "343px" }}
         >
           <h2
-            className="text-center mb-4"
-            style={{ fontWeight: "600", fontSize: "30px" }}
+            className="text-center ms-4"
+            style={{
+              fontWeight: "600",
+              fontSize: "30px",
+              marginBottom: "36px",
+              color: "#000000",
+            }}
           >
             Log In
           </h2>
@@ -34,26 +39,57 @@ const LoginComponent = () => {
               className="form-control"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              style={{ background: "#ededed", height: "50px" }}
+              style={{
+                background: "#F6F6F6",
+                height: "50px",
+                borderRadius: "8px",
+                width: "343px",
+                height: "50px",
+              }}
               placeholder="Email"
               id="exampleInputEmail1"
             />
           </div>
-          <div className="mb-3">
+          <div className="mb-3 ">
             <input
               type="password"
-              style={{ background: "#ededed", height: "50px" }}
+              style={{
+                background: "#F6F6F6",
+                height: "50px",
+                borderRadius: "8px",
+                width: "343px",
+                height: "50px",
+              }}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
             />
+            <button 
+              style={{
+                fontSize: "16px",
+                color: "#000000",
+                position: "relative",
+                bottom: "45px",
+                left: "20px",
+                fontWeight: "500",
+              }}
+              className="float-end btn cursor-pointer"
+            >
+              Show
+            </button>
           </div>
 
           <button
             type="submit"
-            className="btn btn-dark rounded-pill w-100 py-2"
+            className="btn btn-dark  py-2"
+            style={{
+              background: "#000000",
+              borderRadius: "100px",
+              width: "343px",
+              height: "51px",
+            }}
           >
             Log In
           </button>

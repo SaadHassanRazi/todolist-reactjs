@@ -1,138 +1,137 @@
 import React, { useState } from "react";
-import {
-  BlockquoteLeft,
-  BlockquoteRight,
-  ChatDots,
-  Clock,
-} from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
-import "./css/addTask.css";
+import { BlockquoteRight, ChatDots, Clock } from "react-bootstrap-icons";
 import { v4 } from "uuid";
+import "./css/addTask.css";
 import { useTodo } from "../../useCases/context/TodoContext";
+
+import { Dialog, DialogContent, DialogTitle, TextField } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import BasicDateTimePicker from "./DateTimePicker";
 
 const AddTask = () => {
   const [todo, setTodo] = useState("");
   const [status, setStatus] = useState(false);
-  const [dateTime, setDateTime] = useState("");
+  const [dateTime, setDateTime] = useState(null);
   const { addTodoData } = useTodo();
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const userData = {
     id: v4(),
     todo,
     status,
-    date: dateTime,
+    date: dateTime ? dateTime.format() : "No due date",
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(userData);
+
     addTodoData(userData);
 
     setTodo("");
     setStatus(false);
-    setDateTime("");
+    setDateTime(null);
   };
 
   return (
     <div>
-      <Link
-        className="btn btn-transparent"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+      <button
+        onClick={handleOpen}
+        className="btn btn"
+        style={{ fontWeight: "700", fontSize: "18px" }}
       >
-        <span
-          className="font-weight-bold"
-          style={{ fontWeight: "700", fontSize: "18px" }}
-        >
-          + Add New Task
-        </span>
-      </Link>
-      {/* Modal Start */}
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
+        + Add New Task
+      </button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="sm"
+        PaperProps={{
+          style: {
+            width: "765px",
+            height: "501px",
+            maxWidth: "none",
+          },
+        }}
       >
-        <div class="modal-dialog" style={{ maxWidth: "765px" }}>
-          <div class="modal-content" style={{ height: "501px" }}>
-            <div class="modal-body">
-              <h1
-                class="modal-title fs-5 pt-4 ps-3"
-                style={{ fontSize: "20px", fontWeight: "600" }}
-                id="exampleModalLabel"
-              >
-                New Task
-              </h1>
-              <form
-                onSubmit={submitHandler}
-                style={{ width: "626px", height: "248px" }}
-                className="p-4 mx-auto"
-              >
-                <div class="input-group mb-3">
-                  <span class="border-bottom" id="basic-addon1">
-                    <ChatDots className="h4 me-1" />
-                  </span>
-                  <input
-                    type="text"
-                    class="form-control no-border border-bottom pb-3"
-                    placeholder="Summary"
-                    value={todo}
-                    onChange={(e) => setTodo(e.target.value)}
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-                <div class="input-group mb-3">
-                  <span class="border-bottom" id="basic-addon1">
-                    <BlockquoteRight className="h4 me-1" />
-                  </span>
-                  <textarea
-                    type="text"
-                    class="form-control no-border border-bottom"
-                    placeholder="Description"
-                    rows={5}
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-                <div class="input-group mb-3">
-                  <span class="border-bottom" id="basic-addon1">
-                    <Clock className="h4 me-1" />
-                  </span>
-                  <input
-                    type="datetime-local"
-                    value={dateTime}
-                    onChange={(e) => setDateTime(e.target.value)}
-                    class="form-control no-border border-bottom pb-3"
-                    placeholder="Due Date"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn btn-dark d-flex mx-auto justify-content-center rounded-pill   w-75"
-                  style={{ height: "51px", width: "348px", padding: "11px 0" }}
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  className="btn d-flex mx-auto justify-content-center rounded-pill py-2  w-75"
-                  style={{ fontWeight: "bold" }}
-                  data-bs-dismiss="modal"
-                >
-                  Cancel
-                </button>
-              </form>
+        <DialogTitle sx={{ fontWeight: "600px", fontSize: "20px" }}>
+          New Task
+        </DialogTitle>
+        <DialogContent>
+          <form
+            onSubmit={submitHandler}
+            style={{ width: "100%", height: "100%" }}
+            className="p-4 mx-auto"
+          >
+            <div className="input-group mb-3">
+              <span className="border-bottom" id="basic-addon1">
+                <ChatDots className="h4 me-1" />
+              </span>
+              <input
+                type="text"
+                className="form-control no-border border-bottom pb-3"
+                placeholder="Summary"
+                value={todo}
+                onChange={(e) => setTodo(e.target.value)}
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
             </div>
-          </div>
-        </div>
-      </div>
+            <div className="input-group mb-3">
+              <span className="border-bottom" id="basic-addon1">
+                <BlockquoteRight className="h4 me-1" />
+              </span>
+              <textarea
+                type="text"
+                className="form-control no-border border-bottom"
+                placeholder="Description"
+                rows={5}
+                aria-label="Description"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div className="input-group mb-3">
+              <span className="border-bottom" id="basic-addon1">
+                <Clock
+                  className="h4 me-1"
+                  style={{ position: "relative", top: "20px" }}
+                />
+              </span>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <BasicDateTimePicker
+                  onchange={(newValue) => setDateTime(newValue || "")}
+                  value={dateTime}
+                />
+              </LocalizationProvider>
+            </div>
 
-      {/* Modal End */}
+            <button
+              type="submit"
+              className="btn btn-dark d-flex mx-auto justify-content-center rounded-pill"
+              style={{
+                height: "51px",
+                width: "348px",
+                padding: "11px 0",
+                background: "#000000",
+              }}
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              className="btn d-flex mx-auto justify-content-center rounded-pill mt-4 w-75"
+              style={{ fontWeight: "bold" }}
+              onClick={handleClose}
+            >
+              Cancel
+            </button>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

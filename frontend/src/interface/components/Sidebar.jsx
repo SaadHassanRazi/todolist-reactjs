@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BoxArrowRight, ClipboardData, GeoAlt } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../useCases/context/AuthContext";
+import "./css/global.css";
 
 const Sidebar = () => {
   const [activeId, setActiveId] = useState(1);
@@ -37,7 +38,7 @@ const Sidebar = () => {
             <Link
               to={item.path}
               className={`nav-link  ${
-                activeId === item.id ? "bg-dark text-white" : "text-dark"
+                activeId === item.id ? "bg-black text-white" : "text-dark"
               }`}
               onClick={() => handleClick(item.id)}
               style={{

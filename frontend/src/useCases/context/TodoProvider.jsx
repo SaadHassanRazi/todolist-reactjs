@@ -19,7 +19,7 @@ export const TodoProvider = ({ children }) => {
       item.id === data.id ? { ...item, status: data.status } : item
     );
 
-    setTodoData(updatedTodos); // Update the state locally
+    setTodoData(updatedTodos);
   };
   const addTodoData = async (newData) => {
     try {

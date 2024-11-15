@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
       if (user) {
         setUser(user.email);
         setToken(user.token);
-        localStorage.setItem("user", user.email); // Corrected usage
+        localStorage.setItem("user", user.email);
         localStorage.setItem("site", user.token);
 
         setTimeout(() => navigate("/webtask"), 0);
